@@ -2,63 +2,35 @@ import React from 'react';
 import { StyleSheet, View, Text, TextInput } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 
+import Routes from './src/routes'
+
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       showRealApp: false,
-      //To show the main page of the app
     };
   }
   _onDone = () => {
-    // After user finished the intro slides. Show real app through
-    // navigation or simply by controlling state
     this.setState({ showRealApp: true });
   };
   _onSkip = () => {
-    // After user skip the intro slides. Show real app throug
-    // navigation or simply by controlling state
     this.setState({ showRealApp: true });
   };
 
   render() {
-    //If false show the Intro Slides
     if (this.state.showRealApp) {
       //Real Application
       return (
-        <View
-          style={{
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            padding: 50,
-          }}>
-          <Text
-            style={{
-              fontWeight: 'bold',
-              fontSize: 30,
-            }}>
-            Stomatherapydata 
-          </Text>
-          <Text
-            style={{
-              fontWeight: 'bold',
-              fontSize: 30,
-            }}>
-          💉⚕️</Text>
-
-          
-        </View>
+        <Routes />
       );
     } else {
       //Intro slides
       return (
         <AppIntroSlider
           slides={slides}
-          //comming from the JsonArray below
           onDone={this._onDone}
-          //Handler for the done On last slide
           showSkipButton={false}
           onSkip={this._onSkip}
           bottomButton
